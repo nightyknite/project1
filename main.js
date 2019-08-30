@@ -73,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
        // const x = await $.ajax("https://connpass.com/api/v1/event/?count=100&ym=" + ym,  {method:'GET',mode: "no-cors",credentials: 'include' }).then(response => response.text()).then(data => { console.log(data); return data; });
       $.ajax({
-                url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym
+                url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
+                dataType: 'jsonp'
+
             })
             .then(
                 
