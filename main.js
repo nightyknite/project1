@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return events;
       }
 
-      (async () => {
+      (() => {
         let resopnse = null;
         /*
         x = await (await fetch('https://rss.msn.com/ja-jp/?'+ym,
@@ -71,11 +71,18 @@ document.addEventListener("DOMContentLoaded", function(){
         //x = await (await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' }).then((response) => {return response;})).json();
         // x = await response.text();
 
-        const x = await $.ajax("https://connpass.com/api/v1/event/?count=100&ym=" + ym,  {method:'GET',mode: "no-cors",credentials: 'include' }).then(response => response.text()).then(data => { console.log(data); return data; });
-      
-        console.log(x);
-        events = [];
-        events = connpass(x);
+       // const x = await $.ajax("https://connpass.com/api/v1/event/?count=100&ym=" + ym,  {method:'GET',mode: "no-cors",credentials: 'include' }).then(response => response.text()).then(data => { console.log(data); return data; });
+      $.ajax({
+                url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym
+            })
+            .then(
+                
+                function (data) {
+                    events = connpass(data);
+                },
+                function () {      
+            });
+          
         //
         /*
         response = await fetch('https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', {method:'GET',mode: "no-cors",credentials: 'include'});
