@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function(){
           
         // const response = await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "cors",credentials: 'include' });
         // const data = await response.text();
-        response = await $.ajax({
+        data = await $.ajax({
                 url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
                 dataType: 'jsonp'
 
