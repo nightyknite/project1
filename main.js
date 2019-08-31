@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return events;
       }
 
-      (() => {
+      (async () => {
         let resopnse = null;
         /*
         x = await (await fetch('https://rss.msn.com/ja-jp/?'+ym,
