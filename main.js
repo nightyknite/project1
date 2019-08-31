@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
       */
       const connpass = data => {
-        let events = null;
+        let events = [];
         for (var i in data.events) {
           events.push({
             title: data.events[i].title,
