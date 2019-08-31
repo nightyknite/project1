@@ -14,20 +14,20 @@ document.addEventListener("DOMContentLoaded", function(){
       */
       const connpass = data => {
         let events = null;
-        for (var i in data[0].events) {
+        for (var i in data.events) {
           events.push({
-            title: data[0].events[i].title,
-            start: moment(data[0].events[i].started_at),
-            end: moment(data[0].events[i].ended_at),
-            url: data[0].events[i].event_url,
-            description: data[0].events[i].catch,
+            title: data.events[i].title,
+            start: moment(data.events[i].started_at),
+            end: moment(data.events[i].ended_at),
+            url: data.events.event_url,
+            description: data.events[i].catch,
             description: ""
-                         + "day:" + moment(data[0].events[i].started_at).format("MM/DD HH:mm") + " - "
-                         + "" + moment(data[0].events[i].ended_at).format("MM/DD HH:mm") + "<br>"
-                         + "limit:" + data[0].events[i].limit + "<br>"
-                         + "place:" + data[0].events[i].place + "<br>"
-                         + "address:" + data[0].events[i].address + "<br>"
-                         + "description:" + data[0].events[i].catch.substring(0,49) + "<br>"
+                         + "day:" + moment(data.events[i].started_at).format("MM/DD HH:mm") + " - "
+                         + "" + moment(data.events[i].ended_at).format("MM/DD HH:mm") + "<br>"
+                         + "limit:" + data.events[i].limit + "<br>"
+                         + "place:" + data.events[i].place + "<br>"
+                         + "address:" + data.events[i].address + "<br>"
+                         + "description:" + data.events[i].catch.substring(0,49) + "<br>"
                          + "",
 
             backgroundColor: '#a82400',
