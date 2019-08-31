@@ -71,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function(){
         //x = await (await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' }).then((response) => {return response;})).json();
         // data = await response.json();
         const response = await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' });
-        const data = await response.json();
+        const data = await response.text();
+        console.log(data);
         events = connpass(data);
         
 
