@@ -80,6 +80,8 @@ document.addEventListener("DOMContentLoaded", function(){
             .done(
                 
                 function (data) {
+                    console.log(data);
+                    console.log(data[0]);
                     events = connpass(data);
                 });
           
