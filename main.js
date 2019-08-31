@@ -77,13 +77,11 @@ document.addEventListener("DOMContentLoaded", function(){
                 dataType: 'jsonp'
 
             })
-            .then(
+            .done(
                 
                 function (data) {
                     events = connpass(data);
-                },
-                function () {      
-            });
+                });
           
         //
         /*
