@@ -69,10 +69,14 @@ document.addEventListener("DOMContentLoaded", function(){
             }})).text();
         */
         //x = await (await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' }).then((response) => {return response;})).json();
-        // x = await response.text();
+        // data = await response.json();
+        const response = await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' });
+        const data = await response.json();
+        events = connpass(data);
+        
 
-       // const x = await $.ajax("https://connpass.com/api/v1/event/?count=100&ym=" + ym,  {method:'GET',mode: "no-cors",credentials: 'include' }).then(response => response.text()).then(data => { console.log(data); return data; });
-      $.ajax({
+     // const x = await $.ajax("https://connpass.com/api/v1/event/?count=100&ym=" + ym,  {method:'GET',mode: "no-cors",credentials: 'include' }).then(response => response.json()).then(data => { console.log(data); return data; });
+     /* $.ajax({
                 url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
                 dataType: 'jsonp'
 
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     console.log(data[0]);
                     events = connpass(data);
                 });
+        */
           
         //
         /*
