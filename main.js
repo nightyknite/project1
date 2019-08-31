@@ -70,13 +70,18 @@ document.addEventListener("DOMContentLoaded", function(){
         */
         //x = await (await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' }).then((response) => {return response;})).json();
         // data = await response.json();
-        const response = await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "cors",credentials: 'include' });
-        const data = await response.text();
+          
+        // const response = await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "cors",credentials: 'include' });
+        // const data = await response.text();
+        response = await $.ajax({
+                url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
+                dataType: 'jsonp'
+
+            });          
         console.log(data);
         events = connpass(data);
         
 
-     // const x = await $.ajax("https://connpass.com/api/v1/event/?count=100&ym=" + ym,  {method:'GET',mode: "no-cors",credentials: 'include' }).then(response => response.json()).then(data => { console.log(data); return data; });
      /* $.ajax({
                 url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
                 dataType: 'jsonp'
