@@ -66,13 +66,13 @@ document.addEventListener("DOMContentLoaded", function(){
         console.log(data);
         event = connpass(data);
         console.log(event);
-        Object.assign(events, event);
+        events = Object.assign(events, event);
         
         data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
         console.log(data);
         event = atnd(data);
         console.log(event);
-        Object.assign(events, event);
+        events = Object.assign(events, event);
          
         // sessionStorage.setItem('event'+ym, JSON.stringify(events));
         console.log(events);
