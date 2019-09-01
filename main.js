@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function(){
                          + "",
 
             backgroundColor: '#a82400',
-            borderColor: '#a82400'
+            borderColor: '#a82400',
+            textColor: 'white'
           });
         }
         return event;
@@ -53,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function(){
                          + "description:" + data.events[i].event.description.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,49) + "<br>"
                          + "",
             backgroundColor: '#EBAC2B',
-            borderColor: '#EBAC2B'
+            borderColor: '#EBAC2B',
+            textColor: 'white'
           });
         }
         return event;
