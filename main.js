@@ -39,19 +39,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
       const atnd = data => {
         let event = [];
-        for (var i in data[0].events) {
+        for (var i in data.events) {
           event.push({
-            title: data[0].events[i].event.title,
-            start: moment(data[0].events[i].event.started_at),
-            end: moment(data[0].events[i].event.ended_at),
-            url: data[0].events[i].event.event_url,
+            title: data.events[i].event.title,
+            start: moment(data.events[i].event.started_at),
+            end: moment(data.events[i].event.ended_at),
+            url: data.events[i].event.event_url,
             description: ""
-                         + "day:" + moment(data[0].events[i].event.started_at).format("MM/DD HH:mm") + " - "
-                         + "" + moment(data[0].events[i].event.ended_at).format("MM/DD HH:mm") + "<br>"
-                         + "limit:" + data[0].events[i].event.limit + "<br>"
-                         + "place:" + data[0].events[i].event.place + "<br>"
-                         + "address:" + data[0].events[i].event.address + "<br>"
-                         + "description:" + data[0].events[i].event.description.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,49) + "<br>"
+                         + "day:" + moment(data.events[i].event.started_at).format("MM/DD HH:mm") + " - "
+                         + "" + moment(data.events[i].event.ended_at).format("MM/DD HH:mm") + "<br>"
+                         + "limit:" + data.events[i].event.limit + "<br>"
+                         + "place:" + data.events[i].event.place + "<br>"
+                         + "address:" + data.events[i].event.address + "<br>"
+                         + "description:" + data.events[i].event.description.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g,'').substring(0,49) + "<br>"
                          + "",
             backgroundColor: '#EBAC2B',
             borderColor: '#EBAC2B'
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
 
       (async () => {
-        var data = null;
+        var data = [];
         var event = [];
         data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym, dataType: 'jsonp'});          
         event = connpass(data);
