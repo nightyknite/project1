@@ -1,17 +1,14 @@
 document.addEventListener("DOMContentLoaded", function(){
-
-
-    function setCalendar(start, end, callback){
+    
+    const setCalendar = (start, end, callback) => {
       let events = [];
       const ym = start.add(7, 'days').format("YYYYMM"); 
-      /*
       const item = sessionStorage.getItem('event' + ym);
       if (item) {
         events = JSON.parse(item);
         callback(events);
         return;
       }
-      */
       const connpass = data => {
         let event = [];
         for (var i in data.events) {
@@ -66,19 +63,15 @@ document.addEventListener("DOMContentLoaded", function(){
         let event = [];
         for (let i = 0; i < 10; i++) {
             data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym + '&start=' + (i * 100 + 1), dataType: 'jsonp'});
-            console.log(data);
             event = connpass(data);
-            console.log(event);
             events = events.concat(event);
         }
         
         data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
-        console.log(data);
         event = atnd(data);
-        console.log(event);
         events = events.concat(event);
          
-        // sessionStorage.setItem('event'+ym, JSON.stringify(events));
+        sessionStorage.setItem('event' + ym, JSON.stringify(events));
         console.log(events);
         callback(events);
       })();
@@ -116,10 +109,6 @@ document.addEventListener("DOMContentLoaded", function(){
           placement: 'top',
           container: 'body'
         });
-      },
-      eventClick: function(calEvent, jsEvent, view) {
-      },
-      dayClick: function(date, jsEvent, view) {
       }
     });
     
