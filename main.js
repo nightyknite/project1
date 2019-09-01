@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
             start: moment(data.events[i].started_at),
             end: moment(data.events[i].ended_at),
             url: data.events.event_url,
-            description: data.events[i].catch,
             description: ""
                          + "day:" + moment(data.events[i].started_at).format("MM/DD HH:mm") + " - "
                          + "" + moment(data.events[i].ended_at).format("MM/DD HH:mm") + "<br>"
@@ -61,19 +60,19 @@ document.addEventListener("DOMContentLoaded", function(){
       }
 
       (async () => {
-        var data = [];
-        var event = [];
+        let data = [];
+        let event = [];
         data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym, dataType: 'jsonp'});
         console.log(data);
         event = connpass(data);
         console.log(event);
-        events.concat(event);
+        Object.assign(events, event);
         
         data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
         console.log(data);
         event = atnd(data);
         console.log(event);
-        events.concat(event);
+        Object.assign(events, event);
          
         // sessionStorage.setItem('event'+ym, JSON.stringify(events));
         console.log(events);
