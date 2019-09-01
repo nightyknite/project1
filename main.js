@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function(){
       }
       */
       const connpass = data => {
-        let events = [];
+        let event = null;
         for (var i in data.events) {
-          events.push({
+          event.push({
             title: data.events[i].title,
             start: moment(data.events[i].started_at),
             end: moment(data.events[i].ended_at),
@@ -34,13 +34,13 @@ document.addEventListener("DOMContentLoaded", function(){
             borderColor: '#a82400'
           });
         }
-        return events;
+        return event;
       }
 
       const atnd = data => {
-        let events = null;
+        let event = null;
         for (var i in data[0].events) {
-          events.push({
+          event.push({
             title: data[0].events[i].event.title,
             start: moment(data[0].events[i].event.started_at),
             end: moment(data[0].events[i].event.ended_at),
@@ -57,55 +57,20 @@ document.addEventListener("DOMContentLoaded", function(){
             borderColor: '#EBAC2B'
           });
         }
-        return events;
+        return event;
       }
 
       (async () => {
-        let resopnse = null;
-        /*
-        x = await (await fetch('https://rss.msn.com/ja-jp/?'+ym,
-               {method:'GET',cache: "no-cache", mode: "no-cors",credentials: 'include',
-               headers:{"Content-Type": "application/json; charset=utf-8",
-            }})).text();
-        */
-        //x = await (await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "no-cors",credentials: 'include' }).then((response) => {return response;})).json();
-        // data = await response.json();
-          
-        // const response = await fetch('https://connpass.com/api/v1/event/?count=100&ym=' + ym, {method:'GET',mode: "cors",credentials: 'include' });
-        // const data = await response.text();
-        data = await $.ajax({
-                url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
-                dataType: 'jsonp'
-
-            });          
-        console.log(data);
-        events = connpass(data);
-        
-
-     /* $.ajax({
-                url: "https://connpass.com/api/v1/event/?count=100&ym=" + ym,
-                dataType: 'jsonp'
-
-            })
-            .done(
-                
-                function (data) {
-                    console.log(data);
-                    console.log(data.events);
-                    console.log(data[0]);
-                    events = connpass(data);
-                });
-        */
-          
-        //
-        /*
-        response = await fetch('https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', {method:'GET',mode: "no-cors",credentials: 'include'});
-        y = await response.text();
-        console.log(JSON.stringify(y));
-        event = atnd(JSON.stringify(y));
+        var data = null;
+        var event = null;
+        data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym, dataType: 'jsonp'});          
+        event = connpass(data);
         events.concat(event);
-        */
-        // 
+        
+        data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
+        event = atnd(data);
+        events.concat(event);
+         
         // sessionStorage.setItem('event'+ym, JSON.stringify(events));
         console.log(events);
         callback(events);
