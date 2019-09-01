@@ -61,18 +61,22 @@ document.addEventListener("DOMContentLoaded", function(){
       (async () => {
         let data = [];
         let event = [];
+        const progress = document.getElemntById('eventloading');
+        progress.style.display = 'block';
+          
         for (let i = 0; i < 10; i++) {
             data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym + '&start=' + (i * 100 + 1), dataType: 'jsonp'});
             event = connpass(data);
             events = events.concat(event);
+            progress.value = i + 1;
         }
         
         data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
         event = atnd(data);
         events = events.concat(event);
-         
+        progress.value = 11;          
         sessionStorage.setItem('event' + ym, JSON.stringify(events));
-        console.log(events);
+        progress.style.display = 'none';
         callback(events);
       })();
 
