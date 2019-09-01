@@ -64,11 +64,13 @@ document.addEventListener("DOMContentLoaded", function(){
       (async () => {
         let data = [];
         let event = [];
-        data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym, dataType: 'jsonp'});
-        console.log(data);
-        event = connpass(data);
-        console.log(event);
-        events = events.concat(event);
+        for (let i = 0; i < 10; i++) {
+            data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym + '&start=' + (i * 100 + 1), dataType: 'jsonp'});
+            console.log(data);
+            event = connpass(data);
+            console.log(event);
+            events = events.concat(event);
+        }
         
         data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
         console.log(data);
