@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
       */
       const connpass = data => {
-        let event = null;
+        let event = [];
         for (var i in data.events) {
           event.push({
             title: data.events[i].title,
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
 
       const atnd = data => {
-        let event = null;
+        let event = [];
         for (var i in data[0].events) {
           event.push({
             title: data[0].events[i].event.title,
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
       (async () => {
         var data = null;
-        var event = null;
+        var event = [];
         data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym, dataType: 'jsonp'});          
         event = connpass(data);
         events.concat(event);
