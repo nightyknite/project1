@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(){
       (async () => {
         let data = [];
         let event = [];
-        const progress = document.getElemntById('eventloading');
+        const progress = document.getElementById('eventloading');
         progress.style.display = 'block';
           
         for (let i = 0; i < 10; i++) {
