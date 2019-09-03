@@ -63,18 +63,21 @@ document.addEventListener("DOMContentLoaded", function(){
         let event = [];
         const progress = document.getElementById('eventloading');
         progress.style.display = 'block';
+        progress.value = 0;
           
         for (let i = 0; i < 10; i++) {
-            data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym + '&start=' + (i * 100 + 1), dataType: 'jsonp'});
-            event = connpass(data);
-            events = events.concat(event);
-            progress.value = i + 1;
+          data = await $.ajax({url: 'https://connpass.com/api/v1/event/?count=100&ym=' + ym + '&start=' + (i * 100 + 1), dataType: 'jsonp'});
+          event = connpass(data);
+          events = events.concat(event);
+          progress.value = progress.value + 1;
         }
         
-        data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start=1&format=jsonp', dataType: 'jsonp'});          
-        event = atnd(data);
-        events = events.concat(event);
-        progress.value = 11;          
+        for (let i = 0; i < 4; i++) {
+          data = await $.ajax({url: 'https://api.atnd.org/events/?count=100&ym=' + ym + '&start='+ (i * 100 + 1) + '&format=jsonp', dataType: 'jsonp'});          
+          event = atnd(data);
+          events = events.concat(event);
+          progress.value = progress.value + 1;
+        }
         sessionStorage.setItem('event' + ym, JSON.stringify(events));
         progress.style.display = 'none';
         callback(events);
