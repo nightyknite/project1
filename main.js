@@ -95,8 +95,7 @@ document.addEventListener("DOMContentLoaded", function(){
         today: 'today',
         month: 'month',
         week : 'week',
-        day  : 'day',
-        list : 'list'
+        day  : 'day'
       },
       axisFormat: 'HH:mm',
       timeFormat: 'HH:mm',
