@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function(){
       },
       axisFormat: 'HH:mm',
       timeFormat: 'HH:mm',
+      timezone: 'local',
       events    : function(start, end, timezone, callback) {
         setCalendar(start, end, callback);        
       },
