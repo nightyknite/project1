@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function(){
         for (var i in data.events) {
           event.push({
             title: data.events[i].title,
-            start: moment(data.events[i].started_at),
-            end: moment(data.events[i].ended_at),
+            start: data.events[i].started_at,
+            end: data.events[i].ended_at,
             url: data.events.event_url,
             description: ""
                          + "day:" + moment(data.events[i].started_at).format("MM/DD HH:mm") + " - "
@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function(){
         for (var i in data.events) {
           event.push({
             title: data.events[i].event.title,
-            start: moment(data.events[i].event.started_at),
-            end: moment(data.events[i].event.ended_at),
+            start: data.events[i].event.started_at,
+            end: data.events[i].event.ended_at,
             url: data.events[i].event.event_url,
             description: ""
                          + "day:" + moment(data.events[i].event.started_at).format("MM/DD HH:mm") + " - "
