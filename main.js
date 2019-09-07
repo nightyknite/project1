@@ -84,8 +84,9 @@ document.addEventListener("DOMContentLoaded", function(){
       })();
 
     }
-
-    $('#calendar').fullCalendar({
+    
+    const calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
       header    : {
         left  : 'prev,next today',
         center: 'title',
@@ -119,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function(){
         });
       }
     });
-    
+    calendar.render();
+
 }, false);
 
