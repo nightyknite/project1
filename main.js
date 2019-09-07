@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function(){
       header    : {
         left  : 'prev,next today',
         center: 'title',
-        right : 'listMonth,listWeek,listDay'
+        right : 'month,listWeek,listDay'
       },
       buttonText: {
         today: 'today',
