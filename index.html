@@ -9,10 +9,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css" rel="stylesheet" />
   	<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css' rel='stylesheet' />
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css' rel='stylesheet' />
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' >
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet' >
   </head>
   <body>
   	<progress id="eventloading" value="0" max="0" style="display:none" >0</progress>
+    <nav class="navbar navbar-light bg-light" >
+      <a class="navbar-brand">Event Calendar</a>
+      <form class="form-inline">
+        <input id="keyword" class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+        <button id="search" class="btn btn-outline-success my-2 my-sm-0" type="button" >Search</button>
+      </form>
+    </nav>
     <div id='calendar'></div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'  ></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'  ></script>
